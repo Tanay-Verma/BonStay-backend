@@ -11,7 +11,9 @@ const errorHandler = require("./middlewares/errorHandlerMiddleware");
 
 // routes
 const authRouter = require("./routes/auth");
-const hotelRouter = require("./routes/hotels")
+const hotelRouter = require("./routes/hotels");
+const bookingsRouter = require("./routes/bookings");
+const reviewsRouter = require("./routes/reviews");
 
 // Express App
 const express = require("express");
@@ -25,6 +27,14 @@ app.use(cookieParser());
 app.use(morgan("dev"));
 app.use("/", authRouter);
 app.use("/", hotelRouter);
+app.use("/bookings", bookingsRouter);
+app.use("/reviews", reviewsRouter);
+app.use("*", (req, res) => {
+  res.status(404).json({
+    status: "fail",
+    message: "Invalid path",
+  });
+});
 app.use(errorHandler);
 
 const start = async () => {

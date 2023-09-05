@@ -33,7 +33,7 @@ const UserSchema = new Schema(
     },
 
     userBookings: {
-      type: Schema.Types.Array,
+      type: [Schema.Types.ObjectId],
     },
 
     hotelsStayedAt: {

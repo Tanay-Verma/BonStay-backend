@@ -41,12 +41,15 @@ const login = async (req, res) => {
 };
 
 const logout = async (req, res) => {
-  res.clearCookie("userId").status(StatusCodes.OK).json({
-    status:"success",
-    data:{
-        message:"You are logged out!!"
-    }
-  });
+  res
+    .clearCookie("userId")
+    .status(StatusCodes.OK)
+    .json({
+      status: "success",
+      data: {
+        message: "You are logged out!!",
+      },
+    });
 };
 
 module.exports = { register, login, logout };
